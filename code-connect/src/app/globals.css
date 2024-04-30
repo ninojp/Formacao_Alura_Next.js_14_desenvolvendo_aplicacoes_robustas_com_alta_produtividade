@@ -1,6 +1,15 @@
 body{
-    margin: 0;
+    display: block;
     min-height: 100vh;
+    margin: 0;
     background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
     color: aquamarine;
+}
+.app-container{
+    display: flex;
+    width: 1200px;
+    max-width: 90%;
+    height: 100vh;
+    margin: 56px auto;
+    gap: 28px;
 }
