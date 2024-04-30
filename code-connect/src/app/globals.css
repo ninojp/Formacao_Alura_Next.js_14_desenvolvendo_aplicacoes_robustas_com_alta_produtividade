@@ -1,0 +1,6 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
+    color: aquamarine;
+}
