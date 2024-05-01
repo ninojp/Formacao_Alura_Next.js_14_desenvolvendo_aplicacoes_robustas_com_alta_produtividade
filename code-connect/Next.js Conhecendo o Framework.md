@@ -43,3 +43,65 @@ Eu vou deixar aqui pra você o link pro artigo que eu escrevi que explica os pri
 ## Aula 2 - Criando um Crad para os posts
 
 ### Aula 2 - Estruturando de forma semântica - Video 1
+
+Claro! Nesta aula, o instrutor está ensinando como criar o componente "CardPost" para representar um card de postagem de blog ou de post connect. Ele destaca a importância de utilizar tags semânticas, como "article" e "header", para melhorar a acessibilidade e a indexação pelos motores de busca. Além disso, o instrutor explica como adicionar a imagem principal, o título, o texto e o autor do post, passando essas informações como propriedades para o componente. Também é mencionada a importância de utilizar o componente "Image" do Next.js para carregar as imagens de forma otimizada. Por fim, ele destaca a importância de configurar corretamente o Next.js para permitir o download de imagens de fontes confiáveis. Resumindo, o instrutor ensina como evoluir a aplicação criando o componente "CardPost" e o componente "Avatar" para exibir as informações de um post de blog, destacando a importância de utilizar tags semânticas e o componente "Image" do Next.js.
+
+### Aula 2 - Configurando imagens externas - Video 2
+
+Nesta aula, aprendemos a resolver um erro não tratado em uma aplicação utilizando Next.js, relacionado à segurança ao tentar carregar uma imagem externa. Aprendemos a configurar o arquivo next.config.js para permitir o download da imagem de um determinado hostname confiável, como raw.githubusercontent.com, utilizando a propriedade remotePatterns. Além disso, vimos a importância de adicionar texto alternativo (alt) às imagens para acessibilidade. Por fim, foram mencionados os próximos passos a serem realizados, que incluem a estilização do CardPost e a importação de uma fonte específica.
+
+### Aula 2 - Importando fontes do google - Video 3
+
+Aqui está um resumo da aula sobre importação de fontes do Google no Next.js:
+
+A aula aborda o processo de importar a fonte "Prompt" do Google em um projeto Next.js.
+É mostrado um exemplo de importação da fonte "Inter" no arquivo app.js ou .ts, aplicando a classe correspondente no componente React.
+É explicada a diferença entre "Pages Router" e "App Router" e a necessidade de ajustar a importação da fonte de acordo com a estrutura do projeto.
+O código de exemplo demonstra a importação da fonte "Prompt" no arquivo layout.js, configurando parâmetros como peso, subset e display.
+Após a importação, a fonte é aplicada no HTML do projeto.
+É sugerido testar a aplicação para verificar se a fonte foi corretamente aplicada.
+Por fim, a próxima atividade sugerida é a estilização de um card utilizando CSS Modules.
+O foco principal da aula é ensinar como importar e utilizar fontes do Google em um projeto Next.js, abordando as diferenças entre as estruturas de roteamento e fornecendo exemplos práticos de implementação.
+
+### Aula 2 - Para saber mais: importação de fontes otimizadas
+
+Ah, as fontes! Esses pequenos detalhes fazem toda a diferença na estética e usabilidade de um site. Vamos começar com as Google Fonts, um repositório de fontes onde você pode escolher entre uma variedade de estilos para dar aquele toque especial ao seu projeto. Ao importar uma fonte do Google, temos algumas configurações que podem otimizar o carregamento e a apresentação no navegador.
+
+Primeiro, a propriedade subset. Ela é como um filtro que seleciona apenas os caracteres específicos que você precisa, algo essencial se você está lidando com idiomas que têm seu próprio conjunto de caracteres, como o cirílico ou o grego. Isso mantém seu pacote enxuto e seu site ágil.
+
+Depois, temos o display. Essa propriedade define como a fonte será exibida durante o carregamento. O valor swap é um truque mágico que diz ao navegador: "Ei, use a fonte de fallback primeiro e depois troque pela fonte do Google assim que ela estiver pronta!" Isso evita que os usuários vejam aquele efeito desagradável de texto invisível enquanto a fonte está carregando.
+
+Agora, sobre as variantes. Algumas fontes são como um canivete suíço, vêm com um monte de variantes - negrito, itálico, light, e por aí vai. Quando uma fonte não tem variantes, precisamos ser específicos sobre os weights que queremos. Isso é como dizer ao Google: "Só me envie esses pesos específicos, porque é tudo que eu vou usar". Economiza tempo de carregamento e mantém tudo mais leve.
+
+Mas e se você precisar sair do mundo online e usar fontes locais? Nesse caso, você pode importá-las diretamente no seu projeto Next.js. É um pouquinho de trabalho manual, mas nada que uma pessoa desenvolvedora não dê conta. Basta adicionar as fontes aos seus assets e referenciá-las no seu CSS com @font-face, especificando o font-family, src, e font-weight para cada variação que você vai usar:
+
+```jsx
+import localFont from 'next/font/local'
+const myFont = localFont({
+src: './my-font.woff2',
+display: 'swap',
+})
+export default function RootLayout({
+children,
+}: {
+children: React.ReactNode
+}) {
+return (
+<html lang="pt-br" className={myFont.className}>
+<body>{children}</body>
+</html>
+)}
+```
+
+E voilà! Seja com Google Fonts ou com fontes locais, seu Next.js vai ser estiloso e rápido, com todos os caracteres e pesos que você precisar, prontinho para encantar pessoas usuárias com uma experiência visual sem igual.
+
+### Aula 2 - Nessa aula, você aprendeu como`:`
+
+- Utilizar imagens remotas no componente Image;
+- Configurar as props obrigatórias do componente Image;
+- Importar fontes do Google;
+- Analisar os logs e reagir a avisos de configurações do Next.js que estão depreciadas.
+
+## Aula 3 - Obtendo dados da API
+
+### Aula 3 -  - Video 1
