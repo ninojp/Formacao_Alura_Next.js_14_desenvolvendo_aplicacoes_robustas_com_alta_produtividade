@@ -104,4 +104,77 @@ E voilà! Seja com Google Fonts ou com fontes locais, seu Next.js vai ser estilo
 
 ## Aula 3 - Obtendo dados da API
 
-### Aula 3 -  - Video 1
+### Aula 3 - Configurando o backend - Video 1
+
+Nesta aula, o foco é configurar o back-end da aplicação web utilizando uma API e a biblioteca JSON Server. Alguns dos principais pontos abordados são:
+
+Instalação da versão específica do JSON Server (1.0.0-alpha.22) usando o comando:
+> npm i -g json-server@1.0.0-alpha.22.
+
+Inicialização do JSON Server para monitorar e servir um arquivo JSON chamado posts.json usando o comando:
+> json-server posts.json -p 3042.
+
+Verificação do funcionamento da API através do endpoint fornecido.
+Importância de entender melhor o funcionamento do JSON Server, sendo sugerido um artigo para isso.
+Próximo passo é a conexão do Next.js com a API configurada.
+O objetivo é preparar o ambiente para que a aplicação possa consumir os dados da API e exibi-los na interface do usuário.
+
+### Aula 3 - Criando função fetch - Video 2
+
+A aula abordou o processo de conexão entre as diferentes partes de um projeto, como o card estilizado e a API rodando. Para isso, é necessário executar o json-server e o npm run dev em abas separadas no terminal.
+
+Foi apresentada a criação da função getAllPosts(), que tem como objetivo obter os dados da API. A função fetch() é utilizada para realizar a requisição dos dados, com tratamento de erro para verificar a resposta da requisição.
+
+Destacou-se a importância de tornar o componente assíncrono para lidar com chamadas assíncronas e obter os dados do lado do servidor.
+
+Ressaltou-se a importância de ajustes no layout e tratamento de erros, mas enfatizou-se que a API já está se comunicando com a aplicação Next, abrindo caminho para o desenvolvimento de outras funcionalidades.
+
+O conteúdo apresentado destaca a importância da integração entre as diferentes partes de um projeto para garantir o correto funcionamento e a comunicação eficiente entre elas.
+
+Copiar texto da Luri para área de transferêcia
+
+### Aula 3 - Escrevendo logs - Video 3
+
+A aula aborda a importância de ter logs bem organizados para facilitar a identificação e resolução de bugs em aplicações Next.js.
+É apresentado o pacote winston, que permite escrever logs de forma mais robusta e organizada, substituindo o uso do console.log().
+O processo de configuração do logger winston é detalhado, mostrando como instalar o pacote e criar o logger com diferentes níveis de importância e separação dos logs em arquivos específicos.
+É explicado como utilizar o logger no código da aplicação, substituindo os console.log() por logger.error() e logger.info() para mensagens de erro e informativas, respectivamente.
+É demonstrado como testar o código, recarregar a página para gerar logs e verificar a saída nos arquivos combined.log e error.log.
+É apresentada uma prática de retornar um array vazio em caso de erro na requisição, evitando que a aplicação quebre.
+A conclusão destaca a configuração bem-sucedida do logger winston na aplicação Code Connect, proporcionando uma melhor gestão e monitoramento dos logs.
+
+### Aula 3 - Para saber mais: a importância de bons logs
+
+Desde os primeiros computadores, manter um registro sequencial dos processos é super importante para entendermos a ordem de execução das coisas e identificar falhas.
+
+Logs economizam tempo e são essenciais na resolução de problemas e suporte de incidentes. Eles são fundamentais para rastrear o fluxo da informação e melhorar o desempenho, algo que a monitorização de desempenho de aplicativos (APM) não consegue sozinha.
+
+A análise de log é crucial. Logs revelam comportamentos anormais e possíveis pontos de melhoria. Ferramentas apropriadas podem descobrir gargalos de desempenho e melhorias não visíveis durante o desenvolvimento. A análise prolongada de logs também ajuda a identificar falhas de segurança.
+
+Existem dois tipos principais de logs: diagnóstico e auditoria. Logs de diagnóstico estão relacionados ao comportamento da aplicação e ao fluxo da informação - como por exemplo dizer que algo deu errado, quando e porquê, enquanto logs de auditoria registram transações (quem fez o que e quando), para requisitos de software ou simplesmente para o cumprimento de leis.
+
+Um ponto importante: devemos sempre usar níveis apropriados de log para identificar a criticidade dos eventos.
+
+Os níveis básicos são:  
+
+- error - erro,
+- warning - aviso,
+- info - informação,
+- debug - depuração
+- trace - rastreamento.
+
+Quando a gente precisa solucionar um problema em uma aplicação Node.js, os logs podem ser fundamentais para entender a gravidade e a causa do problema. Stack traces (rastros de pilha) e outros tipos de atividades podem ser capturados em logs e vinculados a IDs de uma sessão específica, ID de um usuário — qualquer coisa que ajude a monitorar sua aplicação de forma mais eficiente.
+
+O Node.js já vem com recursos de registro de logs integrados, como o console.log, mas uma biblioteca dedicada de logs, como o Winston, oferece mais opções para escrever os registros da sua aplicação. E foi por isso que utilizamos ele!
+
+Para conhecer mais sobre o winston, que tal uma olhada na [documentação](https://github.com/winstonjs/winston) para ir mais fundo sobre o quão poderoso ele é.
+
+### Aula 3 - Nessa aula, você aprendeu como`:`
+
+- Subir uma API usando o json-server;
+- Obter dados do lado do Servidor;
+- Configurar o winton como o logger da Code Connect.
+
+## Aula 4 - 
+
+### Aula 4 -  - Video 1

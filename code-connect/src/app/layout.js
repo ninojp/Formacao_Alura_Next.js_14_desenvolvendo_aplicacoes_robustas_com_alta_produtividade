@@ -1,4 +1,4 @@
-import {Prompt} from 'next/font/google';
+import { Prompt } from 'next/font/google';
 import { Aside } from "@/components/Aside";
 import "./globals.css";
 
@@ -8,7 +8,7 @@ const prompt = Prompt({
     subsets: ['latin'],
     style: ['normal', 'italic'],
     display: 'swap',
-  });
+});
 
 export const metadata = {
     title: "Code Connect",
@@ -19,9 +19,13 @@ export default function RootLayout({ children }) {
     return (
         <html lang="pt-br" className={prompt.className}>
             <body>
-                <div className="app-container">
-                    <Aside />
-                    {children}
+                <div className='app-container'>
+                    <div>
+                        <Aside />
+                    </div>
+                    <div className='main-content'>
+                        {children}
+                    </div>
                 </div>
             </body>
         </html>
