@@ -175,6 +175,82 @@ Para conhecer mais sobre o winston, que tal uma olhada na [documentação](https
 - Obter dados do lado do Servidor;
 - Configurar o winton como o logger da Code Connect.
 
-## Aula 4 - 
+## Aula 4 - Paginando dados
 
-### Aula 4 -  - Video 1
+### Aula 4 - Obtendo a primeira página - Video 1
+
+A aula abordou a implementação do lado do servidor (server-side) do CodeConnect, onde os dados já estão sendo buscados de uma API.
+Foi mencionado um desafio na organização do grid na aula anterior, e uma solução foi disponibilizada no gabarito.
+O conceito de paginação foi introduzido, pois atualmente todos os posts são exibidos, mas a necessidade de organizar e paginar as informações foi destacada.
+A API suporta paginação, e os parâmetros _page e _per_page foram apresentados para obter dados paginados.
+A função getAllPosts() foi alterada para receber o parâmetro da página, e a função Home() foi ajustada para lidar com a propriedade data e exibir os posts de forma paginada.
+A importância de adicionar a propriedade key ao usar a função map() para renderizar os posts foi abordada, seguindo as boas práticas do React.
+O vídeo concluiu ressaltando que foi dado o primeiro passo em direção à paginação e que ainda há mais funcionalidades a serem implementadas e melhoradas, incluindo a entrega dos comandos de paginação para o usuário.
+Copiar texto da Luri para área de transferêcia
+
+### Aula 4 - Páginas como parâmetros - Video 2
+
+A aula abordou a implementação de paginação em uma aplicação web, com foco no desenvolvimento do lado do servidor utilizando o Next.js. Inicialmente, foi discutido o controle da paginação do lado do cliente em uma aplicação React, usando um estado para saber em qual página estamos.
+
+No entanto, ao desenvolver do lado do servidor com o Next.js, a paginação é controlada pelos parâmetros da URL, sendo uma estratégia interessante indicar na URL qual é a página em que estamos, facilitando o compartilhamento de links.
+
+Foi apresentado um exemplo de implementação, onde são utilizados os parâmetros prev e next na URL para indicar a página anterior e a próxima página. A lógica de renderização condicional do React foi explicada, mostrando como exibir links de âncora para a página anterior e próxima com base nos valores recebidos da API.
+
+Posteriormente, foi feita uma correção na implementação, substituindo as tags `<a>` por `<Link>` fornecidas pelo Next.js, para otimizar a navegação sem recarregar a página inteira. Com essa melhoria, ao clicar em "Próxima página", a página é atualizada sem a necessidade de recarregar todo o conteúdo.
+
+Por fim, foi destacado que com o controle de navegação implementado, é possível evoluir a aplicação para interagir com a API e reagir aos resultados obtidos, permitindo um controle mais preciso da paginação.
+
+### Aula 4 - Entendendo o searchParams - Video 3
+
+A aula abordou o processo de acessar a URL da página em uma aplicação Next.js e capturar o valor da página atual.
+Foi demonstrado como utilizar o objeto searchParams injetado pelo Next para acessar a query string da URL.
+O código de exemplo mostrou como definir a página atual usando o valor de searchParams?.page ou um valor padrão de 1.
+Com a página atual definida, a lógica de paginação foi implementada para buscar os posts de acordo com a página atual.
+Ao testar no navegador, foi observado o funcionamento dinâmico da paginação, com a capacidade de avançar e retroceder entre as páginas.
+Foi ressaltado o benefício de obter os dados paginados do lado do servidor, sem a necessidade de controlar o estado e renderização dos componentes manualmente.
+Um desafio de estilização do link de paginação foi proposto, enfatizando a importância de considerar cenários em que ambos os links de próxima e anterior página estão presentes.
+O próximo passo seria continuar aprendendo e aprimorando o projeto desenvolvido na próxima aula.
+
+### Aula 4 - Para saber mais: props de uma página Next.js
+
+Durante essa aula, nós obtemos os dados da query string da URL. O Next.js provê esses dados e injeta nas props de nossas páginas (page.js).
+
+Mas vamos relembrar o que são query string?
+
+Uma string para a todos governar
+Query String é uma extensão da URL base de um site, carregados por um navegador ou aplicação client side. Tradicionalmente, era usada para registrar o conteúdo de formulários HTML em uma página. Essa string é composta por pares campo-valor, como "campo=valor", unidos por um "&" e separados da URL base por um "?".
+
+Durante a aula, nós capturamos os valores da query string que representa a página que está sendo visualizada. E fizemos isso do lado do servidor:
+
+```Javascript
+export default async function Home({ searchParams }) {
+  const currentPage = searchParams?.page || 1
+  // restante do código omitido
+}
+```
+
+Caso seja necessário fazermos isso do lado do cliente, em casos mais específicos, também é possível! Basta utilizar o hook useSearchParams:
+
+```Javascript
+'use client'
+import { useSearchParams } from 'next/navigation'
+export default function SearchBar() {
+  const searchParams = useSearchParams()
+  const search = searchParams.get('search')
+  // URL -> `/dashboard?search=my-project`
+  // `search` -> 'my-project'
+  return <>Search: {search}</>
+}
+```
+
+Quero destacar aqui o 'use client': usamos isso para indicar para o Next.js que é um componente Client Side. Se quiser entender um pouco mais como isso funciona, pode dar uma olhada na [documentação oficial](https://nextjs.org/docs/app/building-your-application/rendering/client-components), mas não se preocupe porque teremos cursos abordando essa funcionalidade com detalhes.
+
+### Aula 4 - Nessa aula, você aprendeu como`:`
+
+- Obter dados da query string utilizando searchParams;
+- Paginar os posts respeitando a interface da API;
+- Exibir e controlar os comandos de paginação, baseado na resposta do backend.
+
+## Aula 5 - Paginas dinâmicas
+
+### Aula 5 - Link para o post - Video 1

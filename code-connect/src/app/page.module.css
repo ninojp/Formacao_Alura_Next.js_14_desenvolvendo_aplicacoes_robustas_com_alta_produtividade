@@ -4,3 +4,19 @@
     gap: 24px;
     justify-content: space-between;
 }
+.divPaginacao{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /* margin: 0px auto; */
+}
+.linksPaginacao{
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    gap: 3rem;
+}
+.linksPaginacao a{
+    text-decoration: none;
+    color: aquamarine;
+}
