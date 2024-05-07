@@ -2,6 +2,8 @@ import { CardPost } from "@/components/CardPost";
 import styles from "./page.module.css";
 import logger from "@/logger";
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 // const post = {
 //     "id": 1,
@@ -44,7 +46,7 @@ import Link from "next/link";
 //Esta alternativa utiliza o método .catch() para capturar erros de rede e verifica se response é um objeto válido
 //e se response.ok é verdadeiro antes de tentar converter a resposta em JSON.
 async function getAllPosts(page) {
-    const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=2`).catch(error => {
+    const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`).catch(error => {
         logger.error('Erro de rede: ' + error.message);
         return null;
     });
@@ -55,16 +57,20 @@ async function getAllPosts(page) {
     return response.json();
 }
 
-export default async function Home({searchParams}) {
+export default async function Home({ searchParams }) {
     const currentPage = searchParams?.page || 1;
-    const {data: posts, prev, next} = await getAllPosts(currentPage);
+    const { data: posts, prev, next } = await getAllPosts(currentPage);
     return (
         <main className={styles.mainStyled}>
             {posts.map((post) => <CardPost key={post.key} post={post} />)}
             <div className={styles.divPaginacao}>
                 <div className={styles.linksPaginacao}>
-                    {prev && <Link href={`/?page=${prev}`}>Página anterior</Link>}
-                    {next && <Link href={`/?page=${next}`}>Próxima página</Link>}
+                    {prev && <Link href={`/?page=${prev}`}>
+                        <FontAwesomeIcon icon={faCircleArrowLeft} style={{ width: '14px', color:'#fff' }} />Página anterior
+                    </Link>}
+                    {next && <Link href={`/?page=${next}`}>
+                        Próxima página<FontAwesomeIcon icon={faCircleArrowRight} style={{ width: '14px', color:'#fff' }} />
+                    </Link>}
                 </div>
             </div>
         </main>

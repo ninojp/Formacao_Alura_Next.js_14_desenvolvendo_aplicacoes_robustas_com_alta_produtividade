@@ -1,0 +1,18 @@
+.sectionStyled{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+.divPre{
+    background-color: #1b1b1b;
+    border: 1px solid #166659;
+    border-radius: 5px;
+    padding: 2rem 4rem;
+}
+.divAvatar{
+    width: 100%;
+    float: right;
+}

@@ -254,3 +254,27 @@ Quero destacar aqui o 'use client': usamos isso para indicar para o Next.js que 
 ## Aula 5 - Paginas dinâmicas
 
 ### Aula 5 - Link para o post - Video 1
+
+A aula discute a abordagem de roteamento adotada pelo Next.js, um framework popular para desenvolvimento web com React. Enquanto o React Router é comumente usado para definir rotas em aplicações React, o Next.js utiliza um método de roteamento baseado em arquivos, conhecido como File-Based Routing. Isso simplifica a estruturação e organização das rotas, tornando o desenvolvimento mais eficiente.
+
+O instrutor menciona um artigo disponível no blog da Alura que explora detalhadamente o funcionamento do roteamento eficiente com Next.js. A aula também descreve a implementação prática do roteamento, mostrando como criar páginas de detalhes para posts, identificar a estrutura da URL, implementar links e segmentos dinâmicos.
+
+A discussão destaca a importância de compreender a estrutura de roteamento desejada, a criação de páginas e links de forma organizada, e a utilização de componentes específicos do Next.js, como o Link, para uma navegação eficiente na aplicação.
+
+### Aula 5 - Obtendo o post de forma assincrona - Video 2
+
+A aula aborda a implementação de navegação entre posts de forma programática em um projeto utilizando o Next.js.
+Inicialmente, é feita a transformação de um componente article em um link utilizando a tag Link do Next, ajustando estilos para evitar problemas visuais.
+Em seguida, é abordada a criação de uma função getPostBySlug para obter dados de um post específico através de um slug, utilizando o JSON Server para realizar consultas na API.
+A implementação da função getPostBySlug é detalhada, incluindo a construção da URL com base no slug recebido como parâmetro e o tratamento da resposta da API.
+É sugerido como utilizar essa função no componente PagePost para exibir o conteúdo do post de acordo com o slug fornecido.
+O trecho finaliza com um desafio para o espectador completar a implementação e exibir o título do post dentro do componente.
+
+### Aula 5 - Renderizando markdown - Video 3
+
+A aula aborda a implementação de uma função assíncrona PagePost que busca e exibe um post específico com base no parâmetro [slug].
+É apresentada uma resposta da API contendo um campo markdown do post, o que requer a conversão desse Markdown em HTML legível.
+As bibliotecas remark e remark-html são instaladas e utilizadas para converter o conteúdo Markdown em HTML.
+O conteúdo HTML convertido é então renderizado na aplicação, usando a propriedade dangerouslySetInnerHTML.
+É mencionada a questão de segurança ao utilizar dangerouslySetInnerHTML e a possibilidade de aplicar estilos para melhorar a visualização do conteúdo.
+Os próximos passos incluem a estilização do layout da página do post e a implementação de melhorias visuais, como a estilização do bloco de código.

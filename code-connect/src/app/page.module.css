@@ -13,10 +13,14 @@
 .linksPaginacao{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 500px;
     gap: 3rem;
 }
 .linksPaginacao a{
+    display: flex;
     text-decoration: none;
     color: aquamarine;
+    align-items: center;
+    gap: .3rem;
 }
