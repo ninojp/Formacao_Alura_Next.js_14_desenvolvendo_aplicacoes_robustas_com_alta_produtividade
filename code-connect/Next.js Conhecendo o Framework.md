@@ -278,3 +278,46 @@ As bibliotecas remark e remark-html são instaladas e utilizadas para converter 
 O conteúdo HTML convertido é então renderizado na aplicação, usando a propriedade dangerouslySetInnerHTML.
 É mencionada a questão de segurança ao utilizar dangerouslySetInnerHTML e a possibilidade de aplicar estilos para melhorar a visualização do conteúdo.
 Os próximos passos incluem a estilização do layout da página do post e a implementação de melhorias visuais, como a estilização do bloco de código.
+
+### Aula 5 - Mão na massa: estilos da página
+
+Você pode reaproveitar o CardPost, se refatorar ele. Ou mesmo criar tudo do zero. Existem várias formas diferentes para chegar nesse resultado e muito mais do que uma resposta certa.
+
+Opinião do instrutor
+
+Como sempre, a minha solução pra a você dar aquela espiadinha: aqui no [github](https://github.com/alura-cursos/3499-next-14-ssr-codeconnect/commit/06a15a9549bca0586938a21efc16840dfe565076) você consegue ver exatamente os arquivos que eu alterei.
+
+O ponto que eu queria ressaltar é a forma que eu fiz para lidar com tamanhos diferentes da imagem.
+
+Olhando na documentação, podemos trabalhar com a prop fill.
+
+Essa prop, fill, é um booleano que faz a imagem preencher o elemento pai, que é muito útil quando não sabemos qual é a largura e a altura da imagem.
+
+O elemento pai deve ter uma dessas três posições:
+
+position: "relative"
+position: "fixed"
+position: "absolute".
+Por padrão, o elemento img var ter position: "absolute".
+
+Se nenhum estilo for aplicado à imagem, ela se esticará para se ajustar ao container.A gente também pode definir object-fit: "contain" pra não perder a proporção, dependendo do cenário. Ou então podemos aplicar object-fit: "cover" para fazer com que a imagem preencha todo o container e seja cortada para manter a proporção. Pra fazer desse jeito, Temos de aplicar também o estilo overflow: "hidden" deve ser atribuído ao elemento pai.
+
+Para mais informações, veja também:
+
+[position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+[object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
+[object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
+
+### Aula 5 - Nessa aula, você aprendeu como`:`
+
+- Configurar páginas com parâmetros dinâmicos usando Next.js;
+- Implementar a conversão de markdown para HTML;
+- Configurar as libs remark e remark-html.
+
+### Aula 5 - Conclusão - Video 4
+
+Nesta aula, foi abordado o desenvolvimento de páginas dinâmicas no Next.js, onde o conteúdo é gerado de forma dinâmica, seja no lado do servidor ou do cliente. Foram apresentadas técnicas como integração com APIs, paginação de resultados, uso de QueryString e implementação de navegação.
+
+Os alunos tiveram a oportunidade de visualizar e refatorar desafios, além de evoluir suas habilidades em técnicas de desenvolvimento com o Next.js.
+
+Como próximos passos, foi sugerido que os alunos personalizem o projeto desenvolvido, criem novos posts e compartilhem o conteúdo nas redes sociais e no Discord da Alura.
