@@ -1,0 +1,11 @@
+.aside {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 40px 16px 40px 16px;
+    gap: 80px;
+    border-radius: 8px 0px 0px 0px;
+    opacity: 0px;
+    background-color: #171D1F;
+    /* border: 2px dotted #fff; */
+}
