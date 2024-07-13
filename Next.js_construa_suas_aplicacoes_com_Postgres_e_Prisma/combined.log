@@ -178,3 +178,6 @@
 {"level":"info","message":"OK! Slug recebido com Sucesso"}
 {"level":"info","message":"OK! Slug recebido com Sucesso"}
 {"level":"info","message":"OK! Slug recebido com Sucesso"}
+{"level":"error","message":"Erro de rede: fetch failed"}
+{"level":"error","message":"Problema ao obter os posts"}
+{"level":"info","message":"OK! Slug recebido com Sucesso"}
