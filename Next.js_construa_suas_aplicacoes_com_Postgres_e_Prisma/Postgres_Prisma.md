@@ -31,3 +31,17 @@ Também aprendemos a criar relacionamentos entre os modelos, como o relacionamen
 Por fim, vimos como o Prisma mapeia esses modelos para o banco de dados Postgres, criando as tabelas e relacionamentos correspondentes.
 
 ### Aula 1 - Migrações, tabelas e DBeaver - Video 3
+
+Nesta aula, aprendemos como definir os modelos de dados no Prisma e como transformálos em tabelas no banco de dados Postgres.
+
+Primeiro, definimos os campos para os modelos Post e User no arquivo schema.prisma, incluindo campos como createdAt, updatedAt e authorId.
+
+Depois, configuramos o DATABASE_URL no arquivo .env para conectar o Prisma ao banco de dados Postgres, utilizando o nome do banco de dados codeconnect_dev que encontramos no arquivo dockercompose.yaml.
+
+Em seguida, instalamos o Prisma no projeto com **npm i prisma** e executamos a primeira migração com o comando npx prisma migrate dev name init. Essa migração cria as tabelas no banco de dados de acordo com os modelos definidos no schema.prisma.
+
+> npx prisma migrate dev --name init
+
+Para verificar se as tabelas foram criadas corretamente, utilizamos o DBeaver, um software para gerenciar bancos de dados. Conectamos ao banco de dados codeconnect_dev e visualizamos as tabelas Post e User com seus respectivos campos.
+
+Com o banco de dados configurado e as tabelas criadas, estamos prontos para conectar o Next.js ao Prisma para acessar os dados. Essa será a nossa próxima tarefa!
