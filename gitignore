@@ -29,6 +29,8 @@ yarn-error.log*
 .env
 .env*.local
 Next.js_construa_suas_aplicacoes_com_Postgres_e_Prisma/.env
+Formacao_Alura_Next.js_14_desenvolvendo_aplicacoes_robustas_com_alta_produtividade/Next.js_construa_suas_aplicacoes_com_Postgres_e_Prisma
+/.env
 
 # vercel
 .vercel

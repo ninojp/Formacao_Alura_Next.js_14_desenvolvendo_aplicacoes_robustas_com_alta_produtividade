@@ -4,6 +4,7 @@ import logger from "@/logger";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import db from "../../prisma/db";
 
 // const post = {
 //     "id": 1,
@@ -45,16 +46,31 @@ import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-s
 // Exercício, Também poderio ser feito assim======================================================================
 //Esta alternativa utiliza o método .catch() para capturar erros de rede e verifica se response é um objeto válido
 //e se response.ok é verdadeiro antes de tentar converter a resposta em JSON.
-async function getAllPosts(page) {
-    const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`).catch(error => {
-        logger.error('Erro de rede: ' + error.message);
-        return null;
-    });
-    if (!response || !response.ok) {
-        logger.error('Problema ao obter os posts');
-        return [];
+// async function getAllPosts(page) {
+//     const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=4`).catch(error => {
+//         logger.error('Erro de rede: ' + error.message);
+//         return null;
+//     });
+//     if (!response || !response.ok) {
+//         logger.error('Problema ao obter os posts');
+//         return [];
+//     }
+//     return response.json();
+// }
+
+//Agora no segundo curso da formação estamos usando um Banco de daso Postgre=====================================
+async function getAllPosts(page){
+    try {
+        const posts = await db.post.findMany({
+            include: {
+                author: true
+            }
+        });
+        return {data: posts, prev: null, next: null };
+    } catch (error) {
+        logger.error('Falha ao obter os Posts', {error});
+        return {data: [], prev: null, next: null };
     }
-    return response.json();
 }
 
 export default async function Home({ searchParams }) {

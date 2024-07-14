@@ -15,6 +15,8 @@ export const CardPost = ({ post, highlight }) => {
                             src={post.cover}
                             fill
                             alt={`Capa do post de titulo: ${post.title}`}
+                            // width={300}
+                            // height={133}
                         />
                     </figure>
                     </header>
