@@ -2,10 +2,11 @@ import { Prompt } from 'next/font/google';
 import { Aside } from "@/components/Aside";
 import "./globals.css";
 import Head from 'next/head';
+import FormSearch from '@/components/FormSearch';
 
 //Algumas fonts não se faz necessário especificar o WEIGHT, já outras é obrigatório
 const prompt = Prompt({
-    weight: ['400', '600'],
+    weight: ['400','500', '600'],
     subsets: ['latin'],
     style: ['normal', 'italic'],
     display: 'swap',
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
                         <Aside />
                     </div>
                     <div className='main-content'>
+                        <FormSearch />
                         {children}
                     </div>
                 </div>

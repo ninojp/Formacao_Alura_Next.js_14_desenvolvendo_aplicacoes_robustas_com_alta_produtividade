@@ -230,3 +230,38 @@ console.log(removeItem);
 ## Aula 4 - Detalhes do Post
 
 ### Aula 4 - Query com o findFirst - Video 1
+
+Nessa aula, aprendemos a fazer uma query com o método findFirst do Prisma para buscar um post no banco de dados.
+
+Primeiro, removemos o código que fazia o fetch da API e substituímos por uma chamada ao db.post.findFirst().
+
+Depois, configuramos a query com as opções where e include. A opção where filtra o post pelo slug que recebemos como parâmetro, e a opção include garante que o autor do post seja incluído nos resultados.
+
+Por fim, testamos o código e vimos que o post é carregado corretamente.
+
+No entanto, ainda precisamos implementar a programação defensiva para tratar casos em que o post não existe. Isso será feito na próxima aula!
+
+### Aula 4 - Página 404 e posts inexistentes - Video 2
+
+Nessa aula, aprendemos como tratar posts inexistentes em nossa aplicação Next.js.
+
+Primeiro, implementamos um trycatch para lidar com erros ao buscar um post pelo slug. Se o post não for encontrado, lançamos uma exceção e redirecionamos o usuário para a página /notfound.
+
+Depois, criamos uma página customizada para o erro 404, utilizando o arquivo notfound.js. Essa página exibe uma mensagem simples informando que o conteúdo não foi encontrado.
+
+Por fim, você terá o desafio de implementar o layout da página 404, seguindo o protótipo do Figma, e também criar o formulário de busca que será usado em todas as páginas da aplicação.
+
+Lembrese de que o formulário de busca deve ser implementado no layout principal para evitar repetição de código.
+
+Na próxima aula, vamos trabalhar juntos no comportamento do formulário de busca.
+
+### Aula 4 - Nessa aula, você aprendeu como`:`
+
+- Obter dados utilizando o método findFirst;
+- Se recuperar de erros não esperados;
+- Customizar página 404 do Next.js;
+- Redirecionar a navegação do Next.js no lado do servidor.
+
+## Aula 5 - 
+
+### Aula 5 -  - Video 1
