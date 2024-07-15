@@ -130,3 +130,103 @@ Um ORM serve como uma ponte entre esses dois mundos, permitindo que desenvolvedo
 
 ### Aula 3 - Queries com Prisma - Video 1
 
+Nesta aula, aprendemos como corrigir um erro no console do navegador relacionado a atributos extras, causado por extensões como o Grammarly. Também exploramos a paginação de posts usando o Prisma, definindo o número de posts por página com o take e ordenandoos por data de criação com o orderBy.
+
+Para paginar os posts, definimos a constante perPage com o número de posts por página (6 neste caso) e usamos o take: perPage dentro do objeto de configuração do findMany(). Também ordenamos os posts por data de criação usando orderBy: { createdAt: 'desc' }.
+
+No próximo vídeo, vamos aprender como implementar os controles de navegação de página anterior e página seguinte, para que o usuário possa navegar entre as páginas de posts.
+
+### Aula 3 - Paginando o resultado da query - Video 2
+
+Nessa aula, aprendemos a implementar a paginação na nossa aplicação, usando o Prisma para acessar o banco de dados.
+
+Primeiro, definimos o número de itens por página (perPage) e criamos as variáveis prev e next para controlar a navegação entre as páginas.
+
+Depois, calculamos o total de itens (totalItems) e o total de páginas (totalPages) usando o método count() do Prisma e a função Math.ceil().
+
+Para controlar o salto entre os itens, usamos a variável skip, que calcula quantos itens devem ser ignorados para exibir a página correta.
+
+Por fim, corrigimos um erro que acontecia ao navegar entre as páginas, garantindo que o valor da página atual seja sempre um inteiro.
+
+### Aula 3 - Para saber mais: queries poderosas com o Prisma
+
+Vamos simular uma aplicação para gerenciar uma coleção de itens de memorabilia geek, como action figures, quadrinhos e jogos. Utilizaremos o Prisma para realizar operações complexas no banco de dados.
+
+#### create
+
+Para adicionar um novo item à coleção, usamos o método create:
+
+```javaScript
+const novoItem = await prisma.item.create({
+  data: {
+    nome: 'Action Figure Spider-Man',
+    descricao: 'Figura de ação do Spider-Man da série Marvel Legends.',
+    categoria: 'Action Figure',
+    preco: 29.99
+  },
+});
+console.log(novoItem);
+```
+
+#### findMany
+
+Suponha que queremos encontrar todos os itens de uma categoria específica que têm um preço menor que um determinado valor. Podemos fazer isso facilmente com o Prisma:
+
+```javaScript
+const itensBaratos = await prisma.item.findMany({
+  where: {
+    AND: [
+      { categoria: 'Quadrinhos' },
+      { preco: { lt: 15 } }
+    ]
+  },
+});
+console.log(itensBaratos);
+```
+
+#### update
+
+Para atualizar um item na nossa coleção, utilizamos o método update. Suponha que queremos atualizar o preço de um item específico:
+
+```javaScript
+const atualizaItem = await prisma.item.update({
+  where: {
+    id: 1,
+  },
+  data: {
+    preco: 19.99,
+  },
+});
+console.log(atualizaItem);
+```
+
+#### delete
+
+Para remover um item da coleção, podemos usar o método delete:
+
+```javaScript
+const removeItem = await prisma.item.delete({
+  where: {
+    id: 1,
+  },
+});
+console.log(removeItem);
+```
+
+#### Boas práticas e algumas dicas
+
+- Use as migrations do Prisma: As migrações simplificam o processo de atualização do esquema do banco de dados, mantendo tudo sincronizado e seguro.
+
+- Aproveite a tipagem: Embora estejamos usando JavaScript, o Prisma oferece um nível de segurança com os tipos que nos ajuda a prevenir erros comuns de banco de dados.
+
+- Otimize as queries: O Prisma permite a realização de operações complexas com eficiência. No entanto, sempre revise suas queries para garantir que elas sejam otimizadas para performance.
+
+### Aula 3 - Nessa aula, você aprendeu como`:`
+
+- Paginar dados com o Prisma;
+- Aplicar conceitos de take e skip usando queries do Prisma;
+- Analisar e resolver bugs baseado relacionados ao operador soma entre number e string.
+
+## Aula 4 - Detalhes do Post
+
+### Aula 4 - Query com o findFirst - Video 1

@@ -61,12 +61,22 @@ import db from "../../prisma/db";
 //Agora no segundo curso da formação estamos usando um Banco de daso Postgre=====================================
 async function getAllPosts(page){
     try {
+        const porPagina = 4;
+        const skip = (page - 1) * porPagina;
+        const totalItens = await db.post.count();
+        const totalPages = Math.ceil(totalItens / porPagina);
+        const prev = page > 1 ? page - 1 : null;
+        const next = page < totalPages ? page + 1 : null; 
+
         const posts = await db.post.findMany({
+            take: porPagina,
+            skip,
+            orderBy: {createdAt: 'desc'},
             include: {
                 author: true
             }
         });
-        return {data: posts, prev: null, next: null };
+        return {data: posts, prev, next };
     } catch (error) {
         logger.error('Falha ao obter os Posts', {error});
         return {data: [], prev: null, next: null };
@@ -74,7 +84,7 @@ async function getAllPosts(page){
 }
 
 export default async function Home({ searchParams }) {
-    const currentPage = searchParams?.page || 1;
+    const currentPage = parseInt(searchParams?.page || 1);
     const { data: posts, prev, next } = await getAllPosts(currentPage);
     return (
         <main className={styles.mainStyled}>
