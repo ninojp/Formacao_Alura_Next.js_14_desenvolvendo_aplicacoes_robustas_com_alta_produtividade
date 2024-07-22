@@ -59,11 +59,20 @@ import db from "../../prisma/db";
 // }
 
 //Agora no segundo curso da formação estamos usando um Banco de daso Postgre=====================================
-async function getAllPosts(page){
+async function getAllPosts(page, searchTerm){
     try {
+
+        const where = {}
+        
+        if (searchTerm) {
+          where.title = {
+            contains: searchTerm,
+            mode: 'insensitive'
+          }
+        }
         const porPagina = 4;
         const skip = (page - 1) * porPagina;
-        const totalItens = await db.post.count();
+        const totalItens = await db.post.count({ where });
         const totalPages = Math.ceil(totalItens / porPagina);
         const prev = page > 1 ? page - 1 : null;
         const next = page < totalPages ? page + 1 : null; 
@@ -71,6 +80,7 @@ async function getAllPosts(page){
         const posts = await db.post.findMany({
             take: porPagina,
             skip,
+            where,
             orderBy: {createdAt: 'desc'},
             include: {
                 author: true
@@ -85,16 +95,17 @@ async function getAllPosts(page){
 
 export default async function Home({ searchParams }) {
     const currentPage = parseInt(searchParams?.page || 1);
-    const { data: posts, prev, next } = await getAllPosts(currentPage);
+    const searchTerm = searchParams?.q
+    const { data: posts, prev, next } = await getAllPosts(currentPage, searchTerm);
     return (
         <main className={styles.mainStyled}>
-            {posts.map((post) => <CardPost key={post.key} post={post} />)}
+            {posts.map(post => <CardPost key={post.id} post={post} />)}
             <div className={styles.divPaginacao}>
                 <div className={styles.linksPaginacao}>
-                    {prev && <Link href={`/?page=${prev}`}>
+                    {prev && <Link href={{pathname: '/', query: {page: prev, q: searchTerm}}}>
                         <FontAwesomeIcon icon={faCircleArrowLeft} style={{ width: '14px', color:'#fff' }} />Página anterior
                     </Link>}
-                    {next && <Link href={`/?page=${next}`}>
+                    {next && <Link href={{pathname: '/', query: {page: next, q: searchTerm}}}>
                         Próxima página<FontAwesomeIcon icon={faCircleArrowRight} style={{ width: '14px', color:'#fff' }} />
                     </Link>}
                 </div>

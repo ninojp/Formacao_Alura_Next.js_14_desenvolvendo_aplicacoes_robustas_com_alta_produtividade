@@ -2,7 +2,7 @@ import { Prompt } from 'next/font/google';
 import { Aside } from "@/components/Aside";
 import "./globals.css";
 import Head from 'next/head';
-import FormSearch from '@/components/FormSearch';
+import {SearchForm} from '@/components/SearchForm';
 
 //Algumas fonts não se faz necessário especificar o WEIGHT, já outras é obrigatório
 const prompt = Prompt({
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
                         <Aside />
                     </div>
                     <div className='main-content'>
-                        <FormSearch />
+                        <SearchForm />
                         {children}
                     </div>
                 </div>

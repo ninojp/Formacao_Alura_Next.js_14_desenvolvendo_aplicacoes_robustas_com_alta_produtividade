@@ -262,6 +262,200 @@ Na próxima aula, vamos trabalhar juntos no comportamento do formulário de busc
 - Customizar página 404 do Next.js;
 - Redirecionar a navegação do Next.js no lado do servidor.
 
-## Aula 5 - 
+## Aula 5 - Buscas com Where e Deploy
 
-### Aula 5 -  - Video 1
+### Aula 5 - Buscando Posts - Video 1
+
+Nessa aula, aprendemos a implementar a funcionalidade de busca na nossa aplicação Next.js.
+
+Primeiro, criamos um formulário de busca com um input chamado q (query) que envia uma requisição GET para a raiz do nosso projeto.
+
+Em seguida, na página inicial (page.js), analisamos os searchParams para verificar se existe um parâmetro q. Se existir, armazenamos o valor em uma constante chamada searchTerm.
+
+Depois, passamos o searchTerm como parâmetro para a função getAllPosts, que é responsável por buscar os posts do banco de dados.
+
+Na função getAllPosts, criamos um objeto where para definir a cláusula where do Prisma. Se o searchTerm existir, adicionamos uma condição where.title.contains para filtrar os posts pelo título, ignorando maiúsculas e minúsculas.
+
+Por fim, testamos a funcionalidade de busca no navegador e verificamos que ela funciona corretamente, filtrando os posts de acordo com o termo buscado.
+
+No entanto, identificamos um problema: a paginação não leva em conta o termo buscado, o que pode resultar em resultados inconsistentes. Para resolver esse problema, vamos evoluir o nosso link para uma forma mais robusta, contemplando o termo buscado na paginação.
+
+### Aula 5 - Parâmetros nos links - Video 2
+
+Nessa aula, aprendemos como usar parâmetros nos links da nossa aplicação Next.js para melhorar a navegação e a busca.
+
+Vimos como construir links dinâmicos usando o objeto de configuração href, que nos permite definir o pathname (caminho da URL) e a query (parâmetros da URL).
+
+Com isso, conseguimos criar links para a página anterior e próxima, levando em consideração o termo de busca e a página atual.
+
+No final, testamos as alterações e vimos como a busca e a paginação funcionam perfeitamente, com o termo de busca sendo mantido ao navegar entre as páginas.
+
+### Aula 5 - Deploy na Vercel - Video 3
+
+Que legal que você está acompanhando o curso de Next.js!
+
+Nessa aula, aprendemos como fazer o deploy do nosso projeto na Vercel, utilizando o Postgres e o Prisma.
+
+Primeiro, ajustamos as variáveis de ambiente no nosso .env local para que elas sejam compatíveis com a Vercel. Depois, configuramos o package.json para executar os comandos do Prisma antes do next build.
+
+Em seguida, criamos um novo projeto na Vercel e importamos o nosso repositório do GitHub. A Vercel identificou que se trata de um projeto Next.js e iniciou o processo de build.
+
+No entanto, a Vercel não conseguiu se conectar ao banco de dados. Para solucionar esse problema, adicionamos um banco de dados Postgres ao nosso projeto na Vercel.
+
+Após a criação do banco de dados, solicitamos um redeploy e acompanhamos o processo de build. As variáveis de ambiente foram carregadas, o Prisma Client foi gerado, as migrations foram executadas e o banco de dados foi populado.
+
+Por fim, a Vercel concluiu o build e o deploy, e nossa aplicação ficou disponível online!
+
+Agora, podemos acessar nossa aplicação através do domínio gerado pela Vercel e testar todas as funcionalidades, incluindo a busca por posts.
+
+Com isso, finalizamos o curso e aprendemos a construir uma aplicação Next.js Fullstack, sem a necessidade de uma API externa!
+
+### Aula 5 - Para saber mais: clausulas where complexas
+
+![Imagem Prisma](image-1.png)
+
+Dentro do ecossistema Prisma, uma das funcionalidades mais poderosas é a construção de cláusulas WHERE para filtrar dados de forma precisa. O Prisma oferece uma interface flexível, o que nos permite lidar com condições complexas de forma elegante. Vamos explorar como podemos aproveitar ao máximo essa funcionalidade, com exemplos práticos para ilustrar a flexibilidade do Prisma na manipulação de consultas.
+
+#### Filtragem básica
+
+Imagine que temos uma tabela de usuários e queremos encontrar um usuário pelo seu email:
+
+```JavaScript
+const usuario = await prisma.usuarios.findUnique({
+  where: {
+    email: 'fulano@exemplo.com',
+  },
+});
+```
+
+Esta é a forma mais simples de usar a cláusula WHERE: estamos especificando que queremos um registro que corresponda exatamente ao email fornecido. Bem parecido com o que fizemos no Code Connect.
+
+#### Condições compostas
+
+E se precisarmos de uma busca mais específica? Por exemplo, encontrar um usuário que tenha mais de 18 anos e que more em "Nova Friburgo":
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    idade: {
+      gt: 18,
+    },
+    cidade: Nova Friburgo',
+  },
+});
+```
+
+Aqui, usamos { gt: 18 } para especificar uma condição "maior que" (greater then, em inglês). O Prisma oferece vários operadores para lidarmos com condições mais complexas, se liga só aqui na [documentação](https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting).
+
+#### Utilizando OR e AND
+
+Para consultas que exigem lógica "OU" ou "E", o Prisma tem uma abordagem bacana. Vamos buscar usuários que moram em "São Paulo" OU "Rio de Janeiro":
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    OR: [
+      { cidade: 'São Paulo' },
+      { cidade: 'Rio de Janeiro' },
+    ],
+  },
+});
+```
+
+E se quisermos encontrar usuários que morem em "São Paulo" E tenham sobrenome "Silva"? Vem comigo:
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    cidade: 'São Paulo',
+    sobrenome: 'Silva',
+  },
+});
+```
+
+#### Trabalhando com listas
+
+Suponha que queremos encontrar usuários que possuam interesse em "tecnologia" ou "programação". Considerando que interesses seja um campo do tipo array, podemos fazer:
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    interesses: {
+      hasSome: ['tecnologia', 'programação'],
+    },
+  },
+});
+```
+
+#### Buscas e relacionamentos
+
+O Prisma também brilha ao lidar com relacionamentos. Se precisarmos encontrar usuários que publicaram pelo menos um post, podemos fazer assim:
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    posts: {
+      some: {},
+    },
+  },
+});
+```
+
+E se quisermos encontrar usuários com posts que tenham mais de 100 curtidas?
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    posts: {
+      some: {
+        curtidas: {
+          gt: 100,
+        },
+      },
+    },
+  },
+});
+```
+
+Reparou que podemos combinar várias coisas diferentes?
+
+#### Negando condições
+
+Finalmente, se precisarmos buscar por usuários que NÃO moram em "São Paulo", o Prisma nos permite usar o operador not de forma elegante:
+
+```JavaScript
+const usuarios = await prisma.usuarios.findMany({
+  where: {
+    NOT: {
+      cidade: 'São Paulo',
+    },
+  },
+});
+```
+
+Cada um desses exemplos ilustra o poder do Prisma ao construir cláusulas WHERE. O Prisma transforma o processo de consulta em uma experiência mais declarativa, assim podemos focar na lógica de negócios em vez de nos perdermos em sintaxes complexas de query.
+
+### Aula 5 - Nessa aula, você aprendeu como`:`
+
+- Evoluir queries e aplicar cláusulas WHERE;
+- Criar Links utilizando o objeto de configuração;
+- Cuidar da infraestrutura do projeto, customizando scripts de build;
+- Vincular um banco de dados Postgres a um projeto na Vercel.
+
+### Aula 5 - Conclusão - Video 4
+
+Que legal que você chegou até aqui! Nessa aula, finalizamos o curso de Next.js e aprendemos a construir uma aplicação fullstack com Postgres e Prisma.
+
+Começamos utilizando o Docker Composer para configurar nosso ambiente local, garantindo que qualquer pessoa possa clonar o repositório e ter a versão correta do Postgres.
+
+Depois, configuramos o Prisma, que nos ajudou a modelar nossas entidades sem precisar escrever SQL, além de cuidar da inicialização do banco de dados, das migrations e da tradução para a sintaxe do Postgres.
+
+Na página do Next.js, removemos a camada de fetch da API antiga e introduzimos o banco de dados, utilizando o Prisma para realizar as queries.
+
+Após codificar tudo, implementamos, configuramos as variáveis de ambiente e fizemos o deploy na Vercel, simulando um ambiente real.
+
+Agora, nossa aplicação está disponível para o mundo! Você pode explorar o Code Connect, adicionar seus próprios posts e publicar na Vercel.
+
+Lembrese de usar a hashtag #aprendinaAlura para compartilhar seu projeto!
+
+Se precisar de ajuda, estamos no Fórum e no Discord da Escola de FrontEnd. Até a próxima!
