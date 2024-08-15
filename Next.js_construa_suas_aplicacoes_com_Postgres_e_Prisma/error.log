@@ -23,3 +23,4 @@
 {"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"gerenciamento-de-estado-com-reduxa"}
 {"error":{"clientVersion":"5.16.2","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter os Posts"}
 {"error":{},"level":"error","message":"Falha ao obter os Posts"}
+{"error":{"clientVersion":"5.16.2","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter os Posts"}
