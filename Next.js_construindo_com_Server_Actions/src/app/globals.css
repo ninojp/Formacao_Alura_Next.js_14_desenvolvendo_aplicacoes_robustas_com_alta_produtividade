@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    display: block;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
+    color: aquamarine;
+}
+.app-container{
+    display: flex;
+    width: 1200px;
+    max-width: 90%;
+    min-height: 100vh;
+    margin: 56px auto;
+    gap: 28px;
+}
+.main-content {
+    flex-grow: 1;
+}

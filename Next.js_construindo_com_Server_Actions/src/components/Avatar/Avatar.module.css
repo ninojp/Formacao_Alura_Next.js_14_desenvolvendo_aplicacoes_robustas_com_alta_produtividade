@@ -1,0 +1,13 @@
+.ulStyled{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    align-items: center;
+    gap: 8px;
+    color: #888888;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; 
+}
