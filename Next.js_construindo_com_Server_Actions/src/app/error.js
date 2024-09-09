@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 import styles from './error.module.css';
 import imgErro from '../../public/500.png';
 import Link from 'next/link';
-import ArrowBack from '@/components/ArrowBack';
+import ArrowBack from '@/components/Icons/ArrowBack';
+
 
 export default function Error({ error }) {
     useEffect(() => {

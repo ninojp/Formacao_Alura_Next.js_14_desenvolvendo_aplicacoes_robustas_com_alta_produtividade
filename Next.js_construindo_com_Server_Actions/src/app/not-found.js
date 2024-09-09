@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './not-found.module.css';
 import img404 from '../../public/404.png';
 import Link from 'next/link';
-import ArrowBack from '@/components/ArrowBack';
+import ArrowBack from '@/components/Icons/ArrowBack';
 
 export default function NotFound() {
     return (

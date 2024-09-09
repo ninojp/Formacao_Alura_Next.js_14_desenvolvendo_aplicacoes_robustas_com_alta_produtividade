@@ -152,5 +152,92 @@ Essas estruturas são comuns em aplicações modernas, especialmente onde a inte
 - Criar auto relacionamentos;
 - Criar queries do Prisma usando o increment.
 
-## Aula 01 - Server Action e Client Components
+## Aula 02 - Server Action e Client Components
 
+### Aula 02 - Montando o formulário - Vídeo
+
+Nessa aula, começamos a desenvolver o formulário de curtidas (ThumbsUp) para o nosso back-end.
+
+Primeiro, criamos um componente ThumbsUp com uma marcação SVG para o ícone. Depois, criamos um componente IconButton que renderiza um botão com o ícone e recebe as props do botão HTML.
+
+Em seguida, implementamos os estilos do IconButton usando CSS module.
+
+No card post, adicionamos o IconButton dentro de um form para enviar a curtida para o back-end. Também adicionamos um parágrafo para exibir a contagem de likes.
+
+Por fim, ajustamos o layout do card post usando CSS para centralizar o texto da contagem de likes e espaçar os elementos do footer.
+
+### Aula 02 - Enviando Likes - Vídeo
+
+Nessa aula, aprendemos a conectar o botão de curtir ao nosso formulário e implementar a funcionalidade de curtir um post.
+
+Primeiro, usamos a propriedade action do formulário para indicar a server action que será executada ao enviar o formulário.
+
+Depois, usamos o método .bind() para passar o post como parâmetro para a função incrementThumbsUp, que incrementa o número de curtidas do post.
+
+Para garantir que a página seja recarregada após a atualização do número de curtidas, usamos a função revalidatePath() do Next.js.
+
+Essa função permite que o Next.js recarregue a página tanto na homepage quanto na página do post.
+
+### Aula 02 - Estado do Fomulário - Vídeo
+
+Nessa aula, aprendemos a implementar um indicador de carregamento (Spinner) para mostrar à pessoa usuária que a curtida está sendo processada.
+
+Primeiro, criamos um componente Spinner com CSS para o visual do carregamento. Depois, criamos um componente ThumbsUpButton para encapsular o botão de curtir e o Spinner.
+
+Utilizamos o useFormStatus do react-dom para saber se o formulário está sendo submetido. Com isso, podemos exibir o Spinner enquanto o formulário está sendo processado e o botão de curtir fica desabilitado.
+
+Por fim, aprendemos a usar o await new Promise para simular um tempo de espera na função update do lado do servidor, mostrando como o Spinner funciona na prática.
+
+### Aula 02 - Para saber mais: o método bind
+
+#### Mas afinal, o que esse método faz?
+
+O método .bind() é usado para definir o contexto this de uma função, independentemente de como ela é chamada. Em outras palavras, .bind() permite que você fixe ou "amarre" (por isso o "bind") o valor de this para a função, garantindo que ele seja o mesmo, não importa como ou onde a função seja invocada.
+
+JavaScript é uma linguagem de programação muito flexível, mas isso pode levar a problemas de contexto. O valor de this dentro de uma função depende de como a função é chamada. Isso pode causar confusão, especialmente em callbacks e eventos, onde o contexto pode mudar inesperadamente.
+
+#### Tá, mas porque ele foi criado?
+
+O método .bind() está disponível a partir do ECMAScript 5 e foi criado para resolver exatamente esse problema: proporcionar uma maneira de manter o contexto this consistente, independentemente do contexto de execução da função. Isso é útil em situações onde o contexto é faz a diferença na lógica da aplicação, como manipulação de eventos, callbacks assíncronos e quando trabalhamos com classes e métodos em JavaScript (como os Class Components, utilizados em versões mais antigas do React).
+
+Como ele funciona na prática:
+Vamos entender como o .bind() funciona:
+
+```JavaScript
+const person = {
+  name: "João",
+  greet: function() {
+    console.log("Olá, " + this.name);
+  }
+};
+person.greet(); // Saída: "Olá, João"
+const greet = person.greet;
+greet(); // Saída: "Olá, " - porque 'this' não está definido fora do contexto de 'person'
+```
+
+No exemplo acima, quando chamamos greet() diretamente, o contexto this se perde. Aqui é onde .bind() brilha:
+
+```JavaScript
+const boundGreet = person.greet.bind(person);
+boundGreet(); // Saída: "Olá, João"
+```
+
+Ao usar .bind(person), fixamos o contexto de this para person, garantindo que name seja reconhecido independentemente de como greet é chamada.
+
+#### Casos de uso comuns
+
+Manipulação de eventos: Em frameworks nós frequentemente passamos métodos de um componente como callbacks para eventos. Usar .bind() garante que o método mantenha o contexto correto do componente.
+
+```JavaScript
+document.getElementById("meuBotao").addEventListener("click", this.handleClick.bind(this));
+```
+
+Callbacks assíncronos: Ao trabalhar com Promises ou funções assíncronas, o .bind() pode ser usado para assegurar que o contexto dentro dos callbacks seja o esperado.
+
+Programação funcional: Aqui o .bind() é útil para criar versões parcialmente aplicadas de funções, permitindo a reutilização de lógicas de função com diferentes contextos.
+
+### Aula 02 - Nessa aula, você aprendeu como`:`
+
+- Revalidar o cache do Next com a função revalidatePath;
+- Pré-definir parâmetros usando o método bind;
+- Implementar client components e utilizar o hook useFormStatus.

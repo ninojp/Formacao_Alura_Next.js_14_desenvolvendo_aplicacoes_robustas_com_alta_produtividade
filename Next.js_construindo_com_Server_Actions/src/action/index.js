@@ -1,7 +1,9 @@
 'use server'
+import { revalidatePath } from "next/cache";
 import db from "../../prisma/db";
 
 export async function incrementThumbsUp(post) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));//criado apens para delay, visualizar o Spinner(loader)
     await db.post.update({
         where: {
             id: post.id
@@ -11,5 +13,7 @@ export async function incrementThumbsUp(post) {
                 increment: 1
             }
         }
-    })
-}
+    });
+    revalidatePath('/');
+    revalidatePath(`/${post.slug}`);
+};
