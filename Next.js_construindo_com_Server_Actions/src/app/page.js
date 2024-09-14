@@ -61,9 +61,7 @@ import db from "../../prisma/db";
 //Agora no segundo curso da formação estamos usando um Banco de daso Postgre=====================================
 async function getAllPosts(page, searchTerm){
     try {
-
         const where = {}
-        
         if (searchTerm) {
           where.title = {
             contains: searchTerm,
@@ -83,7 +81,8 @@ async function getAllPosts(page, searchTerm){
             where,
             orderBy: {id: 'desc'},
             include: {
-                author: true
+                author: true,
+                comments: true
             }
         });
         return {data: posts, prev, next };

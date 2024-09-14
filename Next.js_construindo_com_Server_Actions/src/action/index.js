@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import db from "../../prisma/db";
 
 export async function incrementThumbsUp(post) {
-    await new Promise((resolve) => setTimeout(resolve, 1000));//criado apens para delay, visualizar o Spinner(loader)
+    await new Promise((resolve) => setTimeout(resolve, 500));//criado apens para delay, visualizar o Spinner(loader)
     await db.post.update({
         where: {
             id: post.id

@@ -5,6 +5,7 @@ import styles from './CardPost.module.css';
 import Link from "next/link";
 import { incrementThumbsUp } from "@/action";
 import { ThumbsUpButton } from "./ThumbsUpButton";
+import { ModalComment } from "../ModalComment";
 
 export const CardPost = ({ post, highlight }) => {
     // console.log(post)
@@ -31,8 +32,12 @@ export const CardPost = ({ post, highlight }) => {
                 <div>
                     <form action={submitThumbsUp}>
                         <ThumbsUpButton />
+                        <p>{post.likes}</p>
                     </form>
-                    <p>{post.likes}</p>
+                    <div>
+                        <ModalComment />
+                        <p>{post.comments.length}</p>
+                    </div>
                 </div>
                 <Avatar
                     imgSrc={post.author.avatar}

@@ -1,15 +1,17 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
-body{
+
+body {
     display: block;
     min-height: 100vh;
     background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
     color: aquamarine;
 }
-.app-container{
+
+.app-container {
     display: flex;
     width: 1200px;
     max-width: 90%;
@@ -17,6 +19,16 @@ body{
     margin: 56px auto;
     gap: 28px;
 }
+
 .main-content {
     flex-grow: 1;
+}
+
+a:visited {
+    color: #81FE88;
+}
+/* Foi usado para gerar uma opacidade no fundo da tag dialog, usado no componente modal */
+::backdrop {
+    background-color: #171D1F;
+    opacity: 0.9;
 }

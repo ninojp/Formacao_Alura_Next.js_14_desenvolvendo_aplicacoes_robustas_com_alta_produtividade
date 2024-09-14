@@ -241,3 +241,36 @@ Programação funcional: Aqui o .bind() é útil para criar versões parcialment
 - Revalidar o cache do Next com a função revalidatePath;
 - Pré-definir parâmetros usando o método bind;
 - Implementar client components e utilizar o hook useFormStatus.
+
+## Aula 03 - Adicioando Comentários
+
+### Aula 03 - Criando a Modal - Vídeo 1
+
+Nessa aula, começamos a construir os componentes para adicionar comentários ao CodeConnect.
+
+Criamos uma modal, que é uma caixa de diálogo, para exibir os comentários. A modal é um componente do lado do cliente, pois precisa de um estado local para controlar se está aberta ou fechada.
+
+Para isso, usamos o hook forwardRef para expor uma referência que permite abrir e fechar a modal.
+
+Criamos métodos closeModal e openModal para controlar o estado da modal.
+
+Também usamos o hook useImperativeHandle para expor esses métodos para quem consumir o componente.
+
+Por fim, criamos um cabeçalho para a modal com um botão de fechar.
+
+O desafio da aula é estilizar a modal para que ela fique como no Figma.
+
+### Aula 03 - Implementando Modal de comentários - Vídeo 2
+
+Nesta aula, aprendemos a implementar uma modal de comentários no nosso projeto Next.js. Começamos adicionando estilos para a modal no arquivo globals.css e modal.module.css.
+
+Em seguida, criamos um novo componente chamado ModalComment que contém a modal e um botão para abri-la. O botão utiliza o componente IconButton com um ícone de chat.
+
+Conectamos a modal ao componente CardPost para que ela seja exibida ao lado do botão de curtir. Para isso, incluímos os comentários na query do banco de dados.
+
+No final, testamos a aplicação e verificamos se a modal está funcionando corretamente.
+
+Agora, vamos continuar construindo os componentes da modal de comentários, como o título, a área de texto e o botão de enviar!
+
+### Aula 03 - Server Actions e Mutations - Vídeo 3
+
