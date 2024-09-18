@@ -274,3 +274,14 @@ Agora, vamos continuar construindo os componentes da modal de comentários, como
 
 ### Aula 03 - Server Actions e Mutations - Vídeo 3
 
+Nessa aula, aprendemos a criar uma função postComment() para adicionar comentários em nosso projeto Next.js. Essa função recebe o post e os dados do formulário como argumentos.
+
+Primeiro, definimos a autora do comentário como "anabeatriz_dev" usando o Prisma para buscar o usuário no banco de dados. Em seguida, criamos o comentário usando db.comment.create(), passando o texto do comentário, o ID da autora e o ID do post.
+
+Para atualizar o cache do Next.js e garantir que as alterações sejam refletidas na interface, usamos revalidatePath() para revalidar o caminho da página principal e da página do post.
+
+Por fim, incluímos a Textarea na modal de comentários e preparamos o terreno para criar um botão reutilizável que exibirá um spinner enquanto o formulário estiver sendo submetido.
+
+Essa aula foi um passo importante para construir a funcionalidade de comentários em nosso projeto. Agora, você está pronto para criar o botão e estilizar a Textarea!
+
+### Aula 03 - 

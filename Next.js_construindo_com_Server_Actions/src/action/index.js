@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import db from "../../prisma/db";
 
 export async function incrementThumbsUp(post) {
-    await new Promise((resolve) => setTimeout(resolve, 500));//criado apens para delay, visualizar o Spinner(loader)
+    await new Promise((resolve) => setTimeout(resolve, 500));//criado apenas para delay, visualizar o Spinner(loader)
     await db.post.update({
         where: {
             id: post.id
@@ -12,6 +12,23 @@ export async function incrementThumbsUp(post) {
             likes: {
                 increment: 1
             }
+        }
+    });
+    revalidatePath('/');
+    revalidatePath(`/${post.slug}`);
+};
+
+export async function postComment(post, formData) {
+    const author = db.user.findFirst({
+        where: {
+            username: 'anabeatriz_dev'
+        }
+    });
+    await db.comment.create({
+        data: {
+            text: formData.get('text'),
+            authorId: author.id,
+            postId: post.id
         }
     });
     revalidatePath('/');
