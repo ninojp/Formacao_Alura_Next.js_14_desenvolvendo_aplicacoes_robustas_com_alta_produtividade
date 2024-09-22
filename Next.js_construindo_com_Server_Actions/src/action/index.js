@@ -19,18 +19,19 @@ export async function incrementThumbsUp(post) {
 };
 
 export async function postComment(post, formData) {
-    const author = db.user.findFirst({
+    await new Promise((resolve) => setTimeout(resolve, 500));//coloca um delay apenas
+    const author = await db.user.findFirst({
         where: {
             username: 'anabeatriz_dev'
         }
-    });
+    })
     await db.comment.create({
         data: {
             text: formData.get('text'),
             authorId: author.id,
             postId: post.id
         }
-    });
+    })
     revalidatePath('/');
     revalidatePath(`/${post.slug}`);
 };

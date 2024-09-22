@@ -284,4 +284,12 @@ Por fim, incluímos a Textarea na modal de comentários e preparamos o terreno p
 
 Essa aula foi um passo importante para construir a funcionalidade de comentários em nosso projeto. Agora, você está pronto para criar o botão e estilizar a Textarea!
 
-### Aula 03 - 
+### Aula 03 - Nessa aula, você aprendeu como`:`
+
+- Implementar o useImperativeHandle;
+- Combinar Server Actions e Client Components;
+- Utilizar o método create do Prisma.
+
+## Aula 04 - 
+
+### Aula 04 -  - Vídeo 1

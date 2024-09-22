@@ -1,0 +1,26 @@
+.textarea{
+    width: 100%;
+    background-color: #7d7a7a;
+    padding: 15px;
+}
+.textarea::placeholder{
+    color: rgb(0, 0, 0);
+    font-size: 14pt;
+}
+.textarea::-webkit-input-placeholder {
+    color: rgb(0, 0, 0);
+ }
+
+/* Firefox 18- */
+.textarea:-moz-placeholder {
+    color: rgb(0, 0, 0);  
+ }
+
+/* Firefox 19+ */
+.textarea::-moz-placeholder {
+    color: rgb(0, 0, 0);  
+ }
+
+.textarea:-ms-input-placeholder {  
+    color: rgb(0, 0, 0);  
+ }

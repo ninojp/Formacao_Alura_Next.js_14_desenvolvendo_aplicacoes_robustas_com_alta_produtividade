@@ -30,7 +30,7 @@ export const CardPost = ({ post, highlight }) => {
                 <Link className={styles.link} href={`/posts/${post.slug}`}>Ver Detalhes</Link>
             </section>
             <footer className={styles.footer}>
-                <div>
+                <div className={styles.divIcons}>
                     <form action={submitThumbsUp}>
                         <ThumbsUpButton />
                         <p>{post.likes}</p>
