@@ -1,0 +1,13 @@
+.comments{
+    margin-top: 35px;
+    background-color: #BCBCBC;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.ulCommentList{
+    list-style: none;
+}
+.comments .divComment {
+    border-bottom: 1px solid black;
+}

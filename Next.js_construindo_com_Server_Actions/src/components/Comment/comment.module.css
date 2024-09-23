@@ -1,0 +1,9 @@
+.divComment{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    gap: .5rem;
+}
+.divComment p {
+    margin: 0;
+}

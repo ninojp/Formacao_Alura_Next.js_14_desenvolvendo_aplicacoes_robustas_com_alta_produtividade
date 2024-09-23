@@ -15,7 +15,7 @@ export const ModalComment = ({ action }) => {
         <Modal ref={modalRef}>
             <form action={action} onSubmit={() => modalRef.current.closeModal()}>
                 <Subheading>Deixe seu comentário sobre o Post:</Subheading>
-                <Textarea name="text" required rows={8} placeholder="Digite seu comentário" />
+                <Textarea name="text" require="true" rows={8} placeholder="Digite seu comentário" />
                 <div className={styles.footer}>
                     <SubmitButton>Comentar</SubmitButton>
                 </div>

@@ -7,6 +7,7 @@ import html from 'remark-html';
 import { CardPost } from "@/components/CardPost";
 import db from "../../../../prisma/db";
 import { redirect } from "next/navigation";
+import { CommentList } from "@/components/CommentList";
 
 //================================================================
 // async function getPostBySlug(slug) {
@@ -31,11 +32,15 @@ async function getPostBySlug(slug) {
             },
             include: {
                 author: true,
-                comments: true
+                comments: {
+                    include: {
+                        author: true
+                    }
+                }
             }
         });
         if (!post) {
-            throw new Error(`O post com Slug: ${slug}, não foi encontrado!`) 
+            throw new Error(`O post com Slug: ${slug}, não foi encontrado!`)
         }
         const processedContent = await remark()
             .use(html)
@@ -55,15 +60,14 @@ async function getPostBySlug(slug) {
 const PagePost = async ({ params }) => {
     const slug = params.slug;
     const post = await getPostBySlug(slug);
-    return (
-        <div>
-            <CardPost post={post} highlight />
-            <h3 className={styles.subtitle}>Código:</h3>
-            <div className={styles.code}>
-                <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
-            </div>
+    return (<div>
+        <CardPost post={post} highlight />
+        <h3 className={styles.subtitle}>Código:</h3>
+        <div className={styles.code}>
+            <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
         </div>
-    );
+        <CommentList comments={post.comments} />
+    </div>);
     // MEU CODIGO
     // <section className={styles.sectionStyled}>
     //     <h2>{post.title}</h2>

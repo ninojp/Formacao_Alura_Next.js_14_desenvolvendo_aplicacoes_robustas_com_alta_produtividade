@@ -290,6 +290,48 @@ Essa aula foi um passo importante para construir a funcionalidade de comentário
 - Combinar Server Actions e Client Components;
 - Utilizar o método create do Prisma.
 
-## Aula 04 - 
+## Aula 04 - Respondendo Comentários
 
-### Aula 04 -  - Vídeo 1
+### Aula 04 - Exibindo os comentários - Vídeo 1
+
+Olá! Nessa aula, aprendemos a exibir os comentários em nossa página de posts. Começamos criando um componente chamado Comment que exibe o avatar, o nome do autor e o texto do comentário. Depois, criamos um componente CommentList que itera sobre a lista de comentários e renderiza cada um deles usando o componente Comment.
+
+Para garantir que os autores dos comentários fossem incluídos, modificamos o getPostBySlug para incluir o author nos comentários.
+
+No final, vimos como a página de posts ficou com os comentários exibidos.
+
+Agora, o desafio é estilizar a área de comentários e os comentários em si, usando o Figma como referência. Depois, vamos começar a desenvolver a funcionalidade de resposta aos comentários!
+
+### Aula 04 - Respondendo via server action - Vídeo 1
+
+Nessa aula, aprendemos a criar uma Server Action para responder comentários em nosso blog.
+
+Vimos que, ao invés de reutilizar a função de postar um comentário com um if e else, é melhor criar uma função separada chamada postReply para lidar especificamente com as respostas.
+
+A função postReply recebe o post e o comentário pai como parâmetros. Para garantir que as respostas fiquem organizadas, usamos o parentId do comentário pai para determinar o nível de aninhamento. Se o comentário pai tiver um parentId, usamos esse valor. Caso contrário, usamos o id do comentário pai.
+
+Essa estrutura de dados nos permite manter o primeiro nível de comentários sempre alinhado e as respostas aninhadas corretamente.
+
+No final da aula, você recebeu um desafio para criar um componente ModalReply que permite responder a um comentário. Esse componente é muito parecido com a modal de comentário, mas usa a Server Action postReply para enviar a resposta.
+
+Lembre-se de que a modelagem de dados é fundamental para o desenvolvimento full-stack. Explore a atividade na plataforma para se aprofundar nesse assunto!
+
+### Aula 04 - Nullish Coalescing Operator (exercício)
+
+Considerando a necessidade de atribuir um valor padrão de R$50,00 para as obras cujo preço não foi especificado pelo artista, qual das seguintes implementações do Nullish Coalescing Operator é a mais adequada para alcançar esse objetivo?
+
+```JavaScript
+const precoFinal = precoObra ?? 50;
+```
+
+Esta é a implementação correta do Nullish Coalescing Operator. Ela atribui o valor de precoObra a precoFinal se precoObra não for null ou undefined. Caso contrário, atribui 50. Isso garante que o preço padrão seja R$50,00 quando o artista não especificar um preço.
+
+### Aula 04 - Nessa aula, você aprendeu como`:`
+
+- Manipular a inclusão de comentários aninhados;
+- Operador ?? (Nullish Coalescing Operator);
+- Pensamento crítico para organizar a estrura visual em componentes reaproveitáveis.
+
+## Aula 05 - 
+
+### Aula 05 -  - Vídeo 1
