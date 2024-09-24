@@ -16,7 +16,7 @@ export const ModalReply = ({ comment, post }) => {
     const action = postReply.bind(null, comment);
     return (<>
         <Modal ref={modalRef}>
-            <form action={action}>
+            <form action={action} onSubmit={() => modalRef.current.closeModal()}>
                 <div className={styles.body}>
                     <Comment comment={comment} />
                 </div>

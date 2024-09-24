@@ -332,6 +332,88 @@ Esta é a implementação correta do Nullish Coalescing Operator. Ela atribui o 
 - Operador ?? (Nullish Coalescing Operator);
 - Pensamento crítico para organizar a estrura visual em componentes reaproveitáveis.
 
-## Aula 05 - 
+## Aula 05 - Finalizando a aplicação
 
-### Aula 05 -  - Vídeo 1
+### Aula 05 - Renderizando respostas - Vídeo 1
+
+Nessa aula, aprendemos a renderizar respostas de comentários em nossa aplicação Next.js, utilizando o Prisma para buscar os dados do banco de dados.
+
+Primeiro, ajustamos a consulta do Prisma para incluir apenas os comentários que não são respostas (ou seja, os comentários "pais"). Depois, modificamos o componente Replies para exibir as respostas de um comentário específico, usando renderização condicional.
+
+Também aprendemos a adicionar um botão "Responder" para cada resposta, que abre uma modal para que o usuário possa escrever uma nova resposta.
+
+Por fim, discutimos a importância de otimizar a performance da aplicação, evitando buscar todas as respostas de uma vez, e buscando-as apenas quando o usuário clicar em "Ver respostas".
+
+### Aula 05 - Cuidados com a performance - Vídeo 2
+
+Nessa aula, aprendemos como otimizar a performance da nossa aplicação Next.js ao buscar dados de forma dinâmica, evitando o carregamento de todos os dados de uma vez.
+
+Para isso, usamos o useEffect do React para fazer um fetch de dados somente quando necessário, no caso, quando o usuário clica para ver as respostas de um comentário.
+
+Criamos uma Route API no Next.js para retornar os dados em formato JSON, seguindo a estrutura de pastas e arquivos que definem a URL do endpoint.
+
+Com essa estrutura, conseguimos fazer requisições HTTP para buscar os dados das respostas de um comentário específico, sem precisar carregar todos os comentários de uma vez.
+
+No final, vimos como a aplicação funciona na prática, com a requisição sendo feita apenas quando o usuário clica para ver as respostas, e os dados sendo carregados de forma eficiente.
+
+### Aula 05 - Para saber mais: APIs restful
+
+Durante o curso, nós criamos uma rota para um endpoint de uma API, utilizando [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) do Next.js:  
+![alt text](image-2.png)  
+Diagrama de estrutura de diretórios com arquivos 'page.js' e 'route.js' indicando suas rotas de acesso na aplicação.
+
+```JavaScript
+// src/app/api/comment/[id]/replies/route.js
+import db from "../../../../../../prisma/db";
+export async function GET (_request, { params }) {
+    const replies = await db.comment.findMany({
+        where: {
+            parentId: parseInt(params.id)
+        },
+        include: {
+            author: true
+        }
+    })
+    return Response.json(replies)
+}
+```
+
+E pegamos lá no nosso Client Component:
+
+```JavaScript
+    async function fetchData() {
+        const response = await fetch(`/api/comment/${comment.id}/replies`)
+        const data = await response.json()
+        setReplies(data)
+    }
+```
+
+Quando estávamos implementando isso, eu falei de Restful e REST. Uma API RESTful geralmente segue os seguintes princípios:
+
+- Cliente-Servidor: uma separação clara entre cliente e servidor.
+- Stateless: cada requisição do cliente para o servidor deve conter todas as informações necessárias para entender e completar a requisição. O servidor não armazena o estado do cliente.
+- Cacheável: as respostas devem ser explícitas sobre a sua cacheabilidade para evitar que clientes reutilizem dados desatualizados ou inapropriados.
+- Interface Uniforme:
+  - Identificação de recursos: cada recurso é identificado por URIs.
+  - Representação de recursos: os recursos são representados em um formato que pode ser facilmente manipulado pelo cliente (como JSON).
+  - Mensagens auto-descritivas: as mensagens de requisição e resposta contêm metadados suficientes para descrever como processá-las.
+  - HATEOAS (Hypermedia As The Engine Of Application State): as respostas da API incluem hiperlinks que permitem ao cliente descobrir outras ações e recursos disponíveis.
+  - Sistema em camadas: a arquitetura pode incluir várias camadas intermediárias entre cliente e servidor para aumentar a escalabilidade, segurança, etc.
+
+Se você quiser mergulhar mais fundo nesse universo, pode começar pelo artigo do Gui Lima: [REST: Conceito e fundamentos](https://www.alura.com.br/artigos/rest-conceito-e-fundamentos).
+
+### Aula 05 - Nessa aula, você aprendeu como`:`
+
+- Implementar uma rota GET utilizando o Route Handler;
+- Buscar dados no servidor a partir do Client Component;
+- Manipular includes aninhados do Prisma.
+
+### Aula 05 - Conclusão - Vídeo 3
+
+Nessa aula, finalizamos o curso "Next.js: construindo com Server Actions", onde evoluímos o Code Connect, nossa aplicação, adicionando funcionalidades como comentários, curtidas e respostas.
+
+Utilizamos o Prisma para migrar o banco de dados e implementamos a funcionalidade de comentários, permitindo que os usuários visualizem, comentem, respondam comentários e até respondam respostas de comentários.
+
+Também exploramos a estrutura de pastas da nossa aplicação, como app/api/comment/[id]/replies, e começamos a usar a conversão de nomes de uma API RESTful.
+
+Agora, você pode publicar seu projeto, compartilhar nas redes sociais e nos marcar com a hashtag #AprendiNaAlura!

@@ -1,13 +1,13 @@
 import logger from "@/logger";
 import styles from './postStyles.module.css';
-import Image from "next/image";
-import { Avatar } from "@/components/Avatar";
 import { remark } from 'remark';
 import html from 'remark-html';
 import { CardPost } from "@/components/CardPost";
 import db from "../../../../prisma/db";
 import { redirect } from "next/navigation";
 import { CommentList } from "@/components/CommentList";
+// import { Avatar } from "@/components/Avatar";
+// import Image from "next/image";
 
 //================================================================
 // async function getPostBySlug(slug) {
@@ -34,7 +34,15 @@ async function getPostBySlug(slug) {
                 author: true,
                 comments: {
                     include: {
-                        author: true
+                        author: true,
+                        children: {
+                            include: {
+                                author: true
+                            }
+                        }
+                    },
+                    where: {
+                        parentId: null
                     }
                 }
             }
