@@ -86,6 +86,67 @@ Ao final, verificamos se o API Router está funcionando corretamente, acessando 
 
 Essa aula foi importante para entendermos como criar um API Router para obter dados específicos e como utilizar rotas dinâmicas no Next.js.
 
-### Aula 02 - Migrar API de detalhes de produtos para API externa - Vídeo 1
+### Aula 02 - Migrar API de detalhes de produtos para API externa - Vídeo 2
 
-### Aula 02 -  - Vídeo 1
+Nessa aula, aprendemos a migrar a API de detalhes do produto para uma API externa, utilizando o API Router do Next.js.
+
+Primeiro, removemos o mock de getProdutoPorSlug e criamos uma função assíncrona getProduto que recebe o slug como parâmetro.
+
+Em seguida, fizemos um fetch para a API Router de produtos, utilizando um template literals para construir a URL dinamicamente.
+
+Depois, criamos uma constante produto que recebe o resultado do res.json(), que é o produto em formato JSON.
+
+Por fim, atualizamos a função ProdutoPage para usar a nova função getProduto e passamos o slug como parâmetro.
+
+Com essa mudança, a página de detalhes do produto agora é renderizada dinamicamente, consumindo dados da API externa.
+
+A aula também destaca a importância de gerar conteúdo estático para otimizar o desempenho do site, e que o servidor não deve ser usado para servir a API Router de detalhes do produto.
+
+### Aula 02 - Migrar mock de produto para endpoint externo - Vídeo 3
+
+Nessa aula, aprendemos a migrar o mock de produto para um endpoint externo, utilizando o serviço n:point. Isso é importante para que possamos gerar um site estático com o Next.js, pois o API Router não estará disponível durante o build.
+
+Primeiro, criamos um JSON Bin no n:point e copiamos os dados do mock de produtos para ele. Em seguida, atualizamos o endpoint do fetch na página de produtos e na página de detalhes do produto para o novo endereço do n:point.
+
+Por fim, removemos o API Router de produtos do projeto, pois ele não é mais necessário.
+
+Com essa mudança, nosso site estático será gerado com os dados dos produtos vindos de um endpoint externo, garantindo que o site funcione corretamente mesmo sem um servidor rodando.
+
+### Aula 02 - O npoint atualiza página - Vídeo 4
+
+Nessa aula, aprendemos a atualizar a página de detalhes do produto usando o endpoint da API.
+
+Primeiro, atualizamos a URL do fetch na página page.jsx para usar o endpoint da API. Depois, modificamos a lógica para buscar todos os produtos e, em seguida, filtrar o produto específico usando o slug.
+
+Por fim, removemos o Router API de produto, pois não precisamos mais dele.
+
+Essa foi apenas uma etapa para gerar a página estática. No próximo vídeo, vamos aprender como fazer isso!
+
+### Aula 02 - Migrando para um serviço externo: SSR em detalhes do produto
+
+Imagine que você é uma pessoa desenvolvedora e trabalha em um projeto de ecommerce que utiliza Next.js para a criação de uma aplicação web. Recentemente, seu time decidiu migrar o endpoint de produtos para um serviço externo, visando melhorar a performance e a atualização dos dados dos produtos. Com essa mudança, você foi encarregado(a) de atualizar a página de detalhes do produto para consumir dados do novo endpoint externo.
+
+Considerando a migração para um serviço externo e a necessidade de atualizar a página de detalhes do produto para usar este novo endpoint, qual seria a melhor maneira de modificar a função getProduto para garantir que os dados do produto sejam buscados do novo serviço externo?
+
+Resposta:  
+Modificar a URL dentro da função getProduto para apontar para o novo serviço externo, mas manter a chamada API no lado do cliente.
+
+```JavaScript
+async function getProduto(slug) {
+  const res = await fetch(`https://api.npoint.io/novoEndpoint/produto/${slug}`);
+  const produto = await res.json();
+  return produto;
+}
+```
+
+Esta a maneira correta de atualizar o API router para o novo endpoint, atualizando a URL para o novo serviço externo, não sendo necessário usar o getServerSideProps.
+
+### Aula 02 - Nessa aula, você aprendeu como`:`
+
+- Criar API SSR para detalhes do produto: demonstramos a criação e transformação de uma API de detalhes de produto em SSR no Next.js, mostrando práticas de SSR em APIs após yarn build;
+- Migrar para serviço externo: migramos o endpoint de produtos para o n:point, incluindo transferência de JSON, remoção do API Router e atualização do endpoint;
+- Atualização da página de produto: atualizamos a página de produto para usar um endpoint externo, assegurando dados atualizados de uma fonte externa. O objetivo principalmente é trabalhar na estratégia de utilizar uma fonte de dados externa para alimentar nossa aplicação e facilitar a geração estática do site.
+
+## Aula 03 - A caminho do SSG
+
+### Aula 03 - Aplicar o generateStaticParams - Vídeo 1
