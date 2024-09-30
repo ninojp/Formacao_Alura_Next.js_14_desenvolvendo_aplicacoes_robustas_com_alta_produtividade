@@ -6,11 +6,9 @@ import { useRouter } from "next/navigation";
 
 export const Produtos = ({ produtos }) => {
   const router = useRouter();
-
   if (!produtos) {
     return <div>Carregando produtos...</div>;
   }
-
   return (
     <section className={styles.produtos}>
       <h2>Produtos que estão bombando!</h2>

@@ -150,3 +150,66 @@ Esta a maneira correta de atualizar o API router para o novo endpoint, atualizan
 ## Aula 03 - A caminho do SSG
 
 ### Aula 03 - Aplicar o generateStaticParams - Vídeo 1
+
+Nessa aula, aprendemos como gerar um site estático com o Next.js usando o generateStaticParams.
+
+Antes, usávamos o getStaticPaths para gerar páginas estáticas, mas agora, com o generateStaticParams, o processo ficou muito mais simples!
+
+O generateStaticParams é uma função que permite gerar páginas estáticas de forma dinâmica, ou seja, podemos gerar páginas para cada produto da nossa loja, por exemplo.
+
+Para usar o generateStaticParams, precisamos criar uma função assíncrona que faz um fetch para a API externa de produtos e retorna um array de objetos com os IDs dos produtos.
+
+Depois, podemos usar o map para iterar sobre esse array e gerar um objeto para cada produto, com a propriedade slug contendo o ID do produto.
+
+Com isso, o Next.js gera páginas estáticas para cada produto, que podem ser hospedadas em qualquer servidor web.
+
+### Aula 03 - Estrutura assets estáticos no Next.js - Vídeo 2
+
+Nessa aula, aprendemos como gerar arquivos estáticos com o Next.js, utilizando a configuração output: 'export' no arquivo next.config.mjs. Essa configuração permite que o Next.js gere um diretório com arquivos HTML, CSS e JavaScript para cada página da aplicação, facilitando a compreensão da estrutura do projeto e o deploy em plataformas como a Vercel.
+
+Vimos também que o Next.js, por padrão, gera um diretório .next com uma estrutura otimizada para performance, mas que pode ser difícil de entender. A configuração output: 'export' nos permite gerar um diretório "out" (ou outro nome que você escolher) com arquivos mais simples e fáceis de entender.
+
+Na próxima aula, vamos testar se os arquivos gerados realmente funcionam no navegador!
+
+### Aula 03 - Faça como eu fiz
+
+Agora é a sua vez! Após assistir ao vídeo onde ensinei como usar o generateStaticParams e o output: export, seu desafio é aplicar esses conceitos. Recrie o processo em seu próprio projeto, configurando adequadamente para gerar páginas estáticas.
+
+Podemos dividir em alguns passos:
+
+- Crie a função generateStaticParams mapeando cada produto;
+- Altere adicione a configuração do Next o output: export.
+
+Se precisar consultar o código modificado, consulte [aqui no Github](https://github.com/alura-cursos/3500-meteora-ecommerce-next-14/compare/aula-2...aula-3). Através dessa comparação, você consegue visualizar as alterações específicas realizadas durante a aula.
+
+### Aula 03 - Nessa aula, você aprendeu como`:`
+
+Aplicar o generateStaticParams para que seja possível gerar páginas estáticas para cada rota da dinâmica de detalhe do produto;
+O build gera o site estático em .Next/static, onde esses arquivos não são facilmente mapeados para os componentes e páginas individuais, pois são otimizados, divididos em chunks (fragmentos) e minificados;
+O "output export" no next.config.js, muda a forma de geração de como o Next.js deve tratar a geração e a disposição dos arquivos estáticos, especialmente para rotas dinâmicas, onde exporta os arquivos estáticos de uma forma mais clássica, onde podemos servir os sites em qualquer servidor web de forma simples.
+
+## Aula 04 - Testando arquivos estáticos
+
+### Aula 04 - Abrir os arquivos estáticos no navegador - Vídeo 1
+
+Nessa aula, aprendemos como abrir o arquivo estático gerado pelo Next.js no navegador. Usamos o Live Server para abrir o arquivo index.html, mas encontramos alguns problemas: os estilos e as imagens não estavam sendo exibidos corretamente.
+
+Isso aconteceu porque o Live Server não consegue localizar os arquivos CSS e JavaScript dentro do diretório /out, onde os arquivos estáticos são gerados.
+
+Para resolver esse problema, configuramos a opção assetPrefix no arquivo next.config.mjs, informando ao Live Server que todos os arquivos estão localizados dentro do diretório /out.
+
+Após essa configuração, recompilamos o projeto com yarn build e, ao abrir o arquivo index.html no navegador, os estilos CSS foram carregados corretamente.
+
+Ainda falta ajustar a renderização das imagens, mas já estamos um passo mais perto de ter um site estático funcionando!
+
+### Aula 04 - Configurar as alterações de links dos assets - Vídeo 2
+
+Essa aula é sobre como configurar as URLs dos seus arquivos estáticos no Next.js para que elas fiquem mais limpas e padronizadas.
+
+Primeiro, a gente aprende que ao gerar um site estático, toda vez que você muda um arquivo, precisa gerar os arquivos estáticos novamente para que as mudanças apareçam no site.
+
+Depois, a gente descobre que a URL dos arquivos estáticos gerados pelo Next.js não é tão amigável, e que podemos usar a configuração trailingSlash no arquivo next.config.js para padronizar as URLs.
+
+Com essa configuração, a URL do arquivo produto/1.html vai ficar produto/1, o que é muito mais limpo e fácil de entender.
+
+### Aula 04 - Loader de imagem customizado - Vídeo 3
