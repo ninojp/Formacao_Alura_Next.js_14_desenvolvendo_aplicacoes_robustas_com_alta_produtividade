@@ -268,4 +268,61 @@ Se precisar consultar o código modificado, consulte [aqui no Github](https://gi
 
 ## Aula 05 - Fazendo o Deploy
 
-### Aula 05 -  - Vídeo 1
+### Aula 05 - Servindo os assets com http-server - Vídeo 1
+
+Essa aula foi incrível, né? Nela, aprendemos como servir os arquivos estáticos do nosso site gerado com o Next.js.
+
+Vimos que o Next.js gera um diretório "out" com todos os arquivos estáticos do nosso site, e podemos usar o http-server para servi-los localmente.
+
+O http-server é uma biblioteca que simula um servidor web, permitindo que você visualize seu site sem precisar configurar um servidor web completo como Apache ou Nginx.
+
+Para usar o http-server, basta instalá-lo e executar o comando http-server na raiz do diretório "out". Ele vai abrir o site no seu navegador, e você poderá navegar pelas páginas como se estivesse online!
+
+Também aprendemos sobre os pilares de um servidor web: o sistema de arquivos e o software HTTP server.
+
+O sistema de arquivos é onde os arquivos do site são armazenados, e o software HTTP server é responsável por processar as requisições dos usuários e enviar as páginas de volta para o navegador.
+
+### Aula 05 - Como o servidor web serve os arquivos estáticos - Vídeo 2
+
+Nessa aula, aprendemos como disponibilizar nosso site estático para o mundo usando a Vercel.
+
+Primeiro, relembramos como um servidor web funciona. Depois, vimos como a Vercel facilita o processo de deploy, utilizando o GitHub para versionar o projeto.
+
+A Vercel oferece uma CDN (Content Delivery Network), que distribui os arquivos estáticos de forma eficiente para os usuários, de acordo com a localização deles. Isso significa que, se você estiver na Europa, os servidores da Vercel na Europa fornecerão o conteúdo para você, e o mesmo acontece para outros continentes.
+
+A Vercel também gerencia o cache, o que significa que, quando alguém acessa o site, os arquivos estáticos são servidos do cache, diminuindo a carga do servidor e tornando o site mais rápido.
+
+No final, conseguimos publicar nosso site com sucesso!
+
+### Aula 05 - Desafio: leve seu projeto para o próximo nível!
+
+Agora que o site está funcionando perfeitamente no ambiente local tanto no Node executando o comando yarn dev quanto com os assets exportados, é hora de levar o projeto para o próximo nível e hospedá-lo na Vercel!
+
+Conecte seu repositório GitHub à Vercel: integre seu repositório GitHub à plataforma Vercel para facilitar o processo de implantação contínua.
+
+Selecione o projeto que deseja implantar: escolha o projeto que deseja hospedar na Vercel e esteja pronto para levá-lo ao mundo.
+
+Configure seu projeto conforme necessário e clique em "Deploy": ajuste as configurações do seu projeto conforme as exigências da Vercel e inicie o processo de implantação clicando no botão "Deploy".
+
+Como desafio adicional, após a implantação na Vercel, experimente hospedar o site também no GitHub Pages, fazendo a hospedagem do diretório ‘out/’. Este serviço gratuito é ideal para hospedar sites estáticos e pode ser uma ótima oportunidade para explorar novas opções de hospedagem.
+
+Opinião do instrutor:  
+O projeto final está disponível para consulta [aqui no GitHub](https://github.com/alura-cursos/3500-meteora-ecommerce-next-14/tree/projeto-final). Sinta-se à vontade para usá-lo como referência caso necessário. Este desafio não apenas solidificará seus conhecimentos práticos, mas também fornecerá uma valiosa experiência em implantar e gerenciar um projeto real na web.
+
+Não subestime o poder de colocar suas habilidades em prática. Fazer o deploy do seu projeto é um passo crucial na jornada de todo desenvolvedor. Mãos à obra e boa sorte!
+
+### Aula 05 - Nessa aula, você aprendeu como`:`
+
+- Usar o http-server para corrigir problemas de carregamento de assets estáticos, substituindo o Live Server, garantindo que todos os recursos sejam carregados corretamente;
+- Reforçar um web server serve arquivos estáticos e a importância do protocolo HTTP nesse processo, enfatizando a correta configuração do servidor para otimizar a entrega;
+- Fazer deploy na Vercel, conectando o GitHub à plataforma para hospedar e disponibilizar sites estáticos na internet, com foco em simplicidade e eficiência.
+
+### Aula 05 - Conclusão  - Vídeo 3
+
+Nessa aula, aprendemos como fazer o deploy do nosso site estático gerado com o Next.js.
+
+Lembra da página de detalhe do produto? Ela era dinâmica, mas conseguimos torná-la estática usando o generateStaticParams. Isso significa que ela é pré-renderizada em tempo de construção do site, o que garante uma performance incrível!
+
+Depois, fizemos o deploy com a Vercel, que otimiza o site para que ele seja entregue rapidinho para as pessoas usuárias.
+
+Agora, você está pronto para compartilhar seu site com o mundo!
