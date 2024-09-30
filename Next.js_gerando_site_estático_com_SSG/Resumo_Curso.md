@@ -213,3 +213,59 @@ Depois, a gente descobre que a URL dos arquivos estáticos gerados pelo Next.js 
 Com essa configuração, a URL do arquivo produto/1.html vai ficar produto/1, o que é muito mais limpo e fácil de entender.
 
 ### Aula 04 - Loader de imagem customizado - Vídeo 3
+
+Nessa aula, aprendemos como criar um loader customizado para imagens no Next.js, garantindo que elas sejam renderizadas corretamente tanto quando a aplicação é executada com o Node.js quanto quando é exportada para arquivos estáticos.
+
+Primeiro, testamos a aplicação com o Live Server e com o Node.js, identificando um erro relacionado à otimização de imagens. O loader padrão do Next.js não era compatível com a exportação para arquivos estáticos, então criamos um loader customizado para resolver esse problema.
+
+Para isso, configuramos o next.config.js para usar um loader customizado, definindo as propriedades loader e loaderFile. Em seguida, criamos o arquivo imagem.js dentro do diretório app, onde definimos a função githubLoader(). Essa função recebe as propriedades src, width e quality da imagem e retorna a URL da imagem com as query strings w e q para o tamanho e a qualidade da imagem.
+
+Com o loader customizado, a aplicação foi executada com sucesso, tanto com o Node.js quanto com arquivos estáticos, garantindo que as imagens sejam renderizadas corretamente em ambos os cenários.
+
+Gostaria de praticar? Que tal tentar criar um loader customizado para um outro tipo de arquivo, como um arquivo de vídeo?
+
+### Aula 04 - Analisando custom loader no Next.js
+
+Imagine que você está desenvolvendo um site de e-commerce utilizando Next.js e precisa garantir que todas as imagens dos produtos sejam carregadas corretamente, independentemente do ambiente em que o site está hospedado. Você aprendeu nos vídeos da aula sobre a importância de configurar corretamente o assetPrefix e o trailingSlash, além de implementar um loader customizado de imagens para manter a consistência das URLs. Agora, você está revisando o código de configuração do Next.js para garantir que tudo está configurado corretamente para o lançamento do site.
+
+Dado o seguinte código de configuração do Next.js para o seu site de e-commerce, qual das seguintes alterações garantiria que as imagens sejam carregadas corretamente em um ambiente de produção, considerando que o site será hospedado em um subdiretório?
+
+```JavaScript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+  images: {
+    loader: "custom",
+    loaderFile: "./src/app/imagem.js",
+  },
+};
+export default nextConfig;
+```
+
+Resposta: Adicionar assetPrefix: '/subdiretorio/' ao nextConfig.  
+Adicionar assetPrefix: '/subdiretorio/' garante que todos os ativos estáticos, incluindo imagens, sejam corretamente referenciados quando o site é hospedado em um subdiretório, mantendo a consistência das URLs.
+
+### Aula 04 - Faça como eu fiz
+
+Quando adicionamos o ‘export’: ‘output’ nas configurações do Next.js para exportação estática, o carregamento das imagens não ocorre conforme o esperado. É necessário corrigir o problema.
+
+Além disso, o Next.js redireciona URLs com barras finais (/produto/1/) para sem barras (/produto/1). Pode-se inverter isso, redirecionando URLs sem barras para com barras para os caminhos funcionarem corretamente.
+
+Agora é a sua vez. Garanta o carregamento correto das imagens e ajuste a configuração para o Next redirecionar para urls sem o ‘/’ no final.
+
+Podemos dividir em alguns passos:
+
+- Adicione a configuração trailingSlash nas configurações do Next para ajustar a url;
+- Crie uma loader de imagem customizado, a fim de carregar as imagens que estão hospedadas em outro servidor corretamente.
+
+Se precisar consultar o código modificado, consulte [aqui no Github](https://github.com/alura-cursos/3500-meteora-ecommerce-next-14/compare/aula-3...aula-4). Através dessa comparação, você consegue visualizar as alterações específicas realizadas durante a aula.
+
+### Aula 04 - Nessa aula, você aprendeu como`:`
+
+- Configurar o assetPrefix para fins didáticos e trailingSlash no Next.js, onde entendemos seu impacto na navegação e estrutura de URLs;
+- A importância do loader customizado de imagens para garantir a renderização correta das imagens em sites estáticos, mantendo a consistência das URLs com a resposta do serviço.
+
+## Aula 05 - Fazendo o Deploy
+
+### Aula 05 -  - Vídeo 1
